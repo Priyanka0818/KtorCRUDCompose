@@ -1,6 +1,5 @@
 package com.app.ktorcrud.ui
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -18,6 +17,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -45,16 +45,16 @@ fun LoadUsers(userViewModel: UserViewModel) {
     val state by userViewModel.users.collectAsState(initial = AllEvents.Nothing)
     val textState = remember { mutableStateOf(TextFieldValue("")) }
 
-    userViewModel.getUsers()
+    LaunchedEffect(key1 = Unit) {
+        userViewModel.getUsers()
+    }
 
     when (state) {
         is AllEvents.Loading -> {
-            Log.e("TAG", "LoadUsers: Loading")
             ProgressDialog(showDialog = (state as AllEvents.Loading).loading)
         }
 
         is AllEvents.StringResource -> {
-            Log.e("TAG", "LoadUsers: StringResource")
             Toast.makeText(
                 LocalContext.current,
                 (state as AllEvents.StringResource).asString().toString(),
@@ -63,13 +63,11 @@ fun LoadUsers(userViewModel: UserViewModel) {
         }
 
         is AllEvents.Success<*> -> {
-            Log.e("TAG", "LoadUsers: Success")
             UserActivity((state as AllEvents.Success<*>).data as ArrayList<Data>, textState)
             ProgressDialog(showDialog = false)
         }
 
         else -> {
-            Log.e("TAG", "else")
             ProgressDialog(showDialog = false)
         }
     }
@@ -78,9 +76,8 @@ fun LoadUsers(userViewModel: UserViewModel) {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun UserActivity(userData: ArrayList<Data>, searchText: MutableState<TextFieldValue>) {
-    val userList = remember(searchText, userData) { // Remember the result
-        getFilteredUserList(searchText, userData)
-    }
+    val userList = getFilteredUserList(searchText, userData)
+
     Box() {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             CompositionLocalProvider(

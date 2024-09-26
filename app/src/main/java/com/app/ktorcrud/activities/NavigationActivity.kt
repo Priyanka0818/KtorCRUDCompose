@@ -2,7 +2,6 @@ package com.app.ktorcrud.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
@@ -13,7 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.app.ktorcrud.ui.ShowInternetStatus
+import com.app.ktorcrud.ui.LoadUsers
 import com.app.ktorcrud.ui.ShowNoInternetStatus
 import com.app.ktorcrud.ui.theme.KtorCRUDTheme
 import com.app.ktorcrud.utils.NetworkConnection
@@ -56,8 +55,8 @@ class NavigationActivity : ComponentActivity() {
                 ShowNoInternetStatus()
             }
             composable("2") {
-                ShowInternetStatus()
-//                LoadUsers(userViewModel)
+//                ShowInternetStatus()
+                LoadUsers(userViewModel)
             }
         }
     }

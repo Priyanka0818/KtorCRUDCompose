@@ -1,30 +1,26 @@
 [versions]
 agp = "8.5.2"
-constraintlayoutCompose = "1.1.0"
 kps="1.5.21"
 kotlin = "1.9.22"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.4"
-activityCompose = "1.9.1"
-composeBom = "2024.08.00"
+lifecycleRuntimeKtx = "2.8.6"
+activityCompose = "1.9.2"
+composeBom = "2024.09.02"
 ktor = "2.3.8"
 kotlinxSerialization = "1.6.3"
 koin = "3.5.3"
 coil = "2.7.0"
 glide = "4.16.0"
 dimen = "1.1.0"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.1"
 splashscreen = "1.0.1"
-lifecycleRuntimeComposeAndroid = "2.8.4"
-androidLib="8.1.4"
-constraintlayout = "2.1.4"
+lifecycleRuntimeComposeAndroid = "2.8.6"
 
 
 [libraries]
-androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose = { module= "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 splashscreen-api = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashscreen" }
@@ -58,6 +54,5 @@ androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", nam
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-android-lib = { id = "com.android.library", version.ref = "androidLib" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kps" }
 
